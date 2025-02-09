@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nonviolent Austin - Building the Beloved Community</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #4a5568;
+            --accent-color: #f6ad37;
+            --light-bg: #f7fafc;
+            --quote-bg: #fbd38d;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background-color: #f7fafc;
+        }
+
+        h1, h2, h3, .cta-button {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.2;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 1rem auto;
+        }
+
+        .header-cta {
+            margin-top: 2rem;
+        }
+
+        .cta-text {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .quote-block {
+            background-color: var(--quote-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 2rem auto;
+            position: relative;
+            max-width: 800px;
+        }
+
+        .quote-block::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: -1rem;
+            left: 1rem;
+            color: rgba(0,0,0,0.1);
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.4;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .quote-attribution {
+            font-weight: 600;
+            color: var(--primary-color);
+            text-align: right;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #e69b26;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .section {
+            margin: 4rem 0;
+            padding: 2rem;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .event-highlight {
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .highlight-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-list li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .highlight-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        .impact-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 1.5rem 0;
+            padding: 1rem;
+            border-left: 4px solid var(--accent-color);
+            background-color: var(--light-bg);
+        }
+
+        .mission {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .mission-text {
+            padding: 1rem;
+        }
+
+        .mission-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .leaders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .leader-card {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .leader-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            object-fit: cover;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .logo {
+            max-width: 200px;
+            margin: 0 auto 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 2rem 1rem;
+                min-height: 400px;
+            }
+            
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+            
+            .section {
+                margin: 2rem 0;
+                padding: 1rem;
+            }
+
+            .mission, .event-highlight {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .quote-text {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="/api/placeholder/1200/400" alt="Austin Bridge" class="header-bg" />
+        <div class="header-content">
+            <h1>Nonviolent Austin</h1>
+            <p>Building the Beloved Community Through Nonviolent Action</p>
+            <div class="header-cta">
+                <p class="cta-text">Support our team's journey to Selma for Kingian Nonviolence training</p>
+                <a href="https://givebutter.com/nonviolent-austin" class="cta-button">Support Our Selma Journey</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="quote-block">
+            <p class="quote-text">We still have a choice today, nonviolent coexistence or violent co-annihilation. We must move past indecision to action.</p>
+            <p class="quote-attribution">- Dr. Martin Luther King Jr.</p>
+        </div>
+
+        <section class="event-highlight">
+            <div>
+                <h2>Join Us in Making History</h2>
+                <p>Six dedicated members of Nonviolent Austin are preparing for a transformative journey to Selma, Alabama. They will:</p>
+                <ul class="highlight-list">
+                    <li>Train in Kingian Nonviolence with Civil Rights leader Dr. Bernard Lafayette</li>
+                    <li>Participate in the 60th anniversary of Bloody Sunday</li>
+                    <li>Walk across the historic Edmund Pettus Bridge</li>
+                    <li>Bring vital nonviolence training skills back to Austin</li>
+                </ul>
+                <p class="impact-text">Your support will help expand nonviolence education throughout Austin's libraries, schools, and places of worship.</p>
+                <a href="https://givebutter.com/nonviolent-austin" class="cta-button">Donate Now</a>
+            </div>
+            <img src="/api/placeholder/400/400" alt="Edmund Pettus Bridge" class="event-image" />
+        </section>
+
+        <section class="section mission">
+            <div class="mission-text">
+                <h2>Our Mission</h2>
+                <p>Nonviolent Austin is part of Pace e Bene's Campaign Nonviolence, working to end war, poverty, racism, and environmental destruction while building a culture of active nonviolence. In the spirit of St. Francis, Gandhi, Dorothy Day, and Dr. Martin Luther King, Jr., we invite you to join us in walking the path of nonviolence.</p>
+            </div>
+            <img src="/api/placeholder/600/400" alt="Community gathering" class="mission-image" />
+        </section>
+
+        <section class="section">
+            <h2>Our Community Leaders</h2>
+            <div class="leaders-grid">
+                <div class="leader-card">
+                    <img src="/api/placeholder/150/150" alt="Jim Crosby" class="leader-image" />
+                    <h3>Jim Crosby</h3>
+                    <p>Co-founder</p>
+                    <p>"Find and build your piece of the beloved community and make that an integral part of your spiritual practice."</p>
+                </div>
+                <div class="leader-card">
+                    <img src="/api/placeholder/150/150" alt="Community Leader" class="leader-image" />
+                    <h3>Community Leader</h3>
+                    <p>Trainer</p>
+                    <p>Dedicated to spreading the message of nonviolence and peaceful conflict resolution.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Join the Movement</h2>
+            <div class="social-links">
+                <a href="#" class="cta-button">Follow on Facebook</a>
+                <a href="#" class="cta-button">Join Our Newsletter</a>
+                <a href="https://givebutter.com/nonviolent-austin" class="cta-button">Support Our Mission</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <img src="/api/placeholder/200/100" alt="Nonviolent Austin Logo" class="logo" />
+        <p>Nonviolent Austin - Part of Campaign Nonviolence</p>
+        <p>Together we can build a culture of peace, economic equality, racial justice, and environmental healing.</p>
+    </footer>
+</body>
+</html>
