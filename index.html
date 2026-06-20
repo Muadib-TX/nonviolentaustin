@@ -640,7 +640,6 @@
             <p>Support this training return to Selma. Your gift covers travel, training, and community learning.</p>
             <div class="campaign-actions">
                 <a class="campaign-button primary" href="https://givebutter.com/selma-again-for-doc-for-the-work?gbtid=8bdcab99-838c-4826-966f-651c4bd347ad" target="_blank" rel="noopener noreferrer">Donate</a>
-                <button class="campaign-button secondary" id="campaignPopupDismiss">Close</button>
             </div>
         </div>
     </div>
@@ -649,7 +648,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             var popup = document.getElementById('campaignPopup');
             var closeButton = document.getElementById('campaignPopupClose');
-            var dismissButton = document.getElementById('campaignPopupDismiss');
             if (!popup) return;
 
             function closePopup() {
@@ -660,9 +658,6 @@
 
             if (closeButton) {
                 closeButton.addEventListener('click', closePopup);
-            }
-            if (dismissButton) {
-                dismissButton.addEventListener('click', closePopup);
             }
             popup.addEventListener('click', function(event) {
                 if (event.target === popup) {
