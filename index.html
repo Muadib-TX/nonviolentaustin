@@ -73,26 +73,30 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            min-height: 500px;
+            min-height: 520px;
             display: flex;
             align-items: center;
             justify-content: center;
+            background-image: url('assets/austinnvheader.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
         }
 
-        .header-bg {
+        .header::before {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.2;
+            inset: 0;
+            background: rgba(26, 54, 93, 0.72);
+            mix-blend-mode: multiply;
         }
 
         .header-content {
             position: relative;
             z-index: 1;
-            max-width: 800px;
+            max-width: 760px;
+            width: 100%;
+            padding: 0 1rem;
         }
 
         .header h1 {
@@ -336,8 +340,8 @@
 
         @media (max-width: 768px) {
             .header {
-                padding: 2rem 1rem;
-                min-height: 400px;
+                padding: 3rem 1rem;
+                min-height: 420px;
             }
             
             .header h1 {
@@ -512,7 +516,6 @@
 </head>
 <body>
     <header class="header">
-        <img src="assets/austinnvheader.jpg" alt="Austin Bridge" class="header-bg" />
         <div class="header-content">
             <h1>Nonviolent Austin</h1>
             <p>Building the Beloved Community Through Nonviolent Action</p>
