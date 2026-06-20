@@ -504,19 +504,26 @@
             position: absolute;
             top: 1rem;
             right: 1rem;
-            width: 42px;
-            height: 42px;
-            border: 1px solid rgba(255,255,255,0.9);
-            background: rgba(255,255,255,0.14);
-            color: #ffffff;
-            font-size: 1.6rem;
+            width: 44px;
+            height: 44px;
+            border: 2px solid var(--primary-color);
+            background: white;
+            color: var(--primary-color);
+            font-size: 1.5rem;
             line-height: 1;
-            border-radius: 999px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: background 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .campaign-popup-close:hover {
+            background: #ebf4ff;
+            transform: scale(1.05);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
         }
 
         .campaign-popup-close:hover {
