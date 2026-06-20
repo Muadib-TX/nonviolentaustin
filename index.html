@@ -327,6 +327,148 @@
                 font-size: 1.25rem;
             }
         }
+
+        .campaign-popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.72);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            z-index: 9999;
+        }
+
+        .campaign-popup {
+            background: white;
+            border-radius: 16px;
+            max-width: 520px;
+            width: 100%;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+            padding: 2rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .campaign-popup-image {
+            width: 100%;
+            max-height: 150px;
+            object-fit: cover;
+            border-radius: 14px;
+            margin-bottom: 1rem;
+        }
+
+        .campaign-popup h3 {
+            margin-bottom: 0.35rem;
+            font-size: 1.75rem;
+            color: var(--primary-color);
+            line-height: 1.15;
+        }
+
+        .campaign-popup-subtitle {
+            margin-bottom: 0.45rem;
+            color: #4a5568;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .campaign-popup-subtitle.alt {
+            margin-bottom: 1rem;
+            color: #718096;
+            font-size: 0.92rem;
+            font-weight: 500;
+        }
+
+        .campaign-popup p {
+            margin-bottom: 1rem;
+            color: #374151;
+            line-height: 1.5;
+            font-size: 0.98rem;
+        }
+
+        .campaign-popup .campaign-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .campaign-popup .campaign-button {
+            min-width: 140px;
+            padding: 0.85rem 1.4rem;
+            font-size: 0.98rem;
+        }
+
+        @media (max-width: 520px) {
+            .campaign-popup {
+                max-width: 92%;
+                padding: 1.25rem;
+            }
+
+            .campaign-popup h3 {
+                font-size: 1.55rem;
+            }
+
+            .campaign-popup-subtitle,
+            .campaign-popup-subtitle.alt {
+                font-size: 0.9rem;
+            }
+
+            .campaign-popup p {
+                font-size: 0.95rem;
+            }
+
+            .campaign-popup .campaign-actions {
+                flex-direction: column;
+                gap: 0.7rem;
+            }
+        }
+
+        .campaign-popup .campaign-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .campaign-popup .campaign-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.95rem 1.6rem;
+            border-radius: 999px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .campaign-popup .campaign-button.primary {
+            background: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .campaign-popup .campaign-button.secondary {
+            background: #e2e8f0;
+            color: #2d3748;
+        }
+
+        .campaign-popup .campaign-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .campaign-popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: transparent;
+            color: #4a5568;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -431,5 +573,47 @@
         <p>Nonviolent Austin - Part of Campaign Nonviolence</p>
         <p>Together we can build a culture of peace, economic equality, racial justice, and environmental healing.</p>
     </footer>
+
+    <div class="campaign-popup-overlay" id="campaignPopup">
+        <div class="campaign-popup">
+            <button class="campaign-popup-close" id="campaignPopupClose" aria-label="Close popup">×</button>
+            <img class="campaign-popup-image" src="https://givebutter.s3.amazonaws.com/media/gFMnts8cg7aCRGngrgjjNGEj2Kzya68diJL4BUkB.jpg" alt="Nonviolent Austin trainers in front of the colorful mural at the Selma Center." />
+            <h3>Nonviolent Austin Summer in Selma.</h3>
+            <p class="campaign-popup-subtitle">We're Bringing It Back.</p>
+            <p class="campaign-popup-subtitle alt">Level 2 Kingian Nonviolence Training Fundraiser · July 19–25, 2026</p>
+            <p>Support this training return to Selma. Your gift covers travel, training, and community learning.</p>
+            <div class="campaign-actions">
+                <a class="campaign-button primary" href="https://givebutter.com/selma-again-for-doc-for-the-work?gbtid=8bdcab99-838c-4826-966f-651c4bd347ad" target="_blank" rel="noopener noreferrer">Donate</a>
+                <button class="campaign-button secondary" id="campaignPopupDismiss">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var popup = document.getElementById('campaignPopup');
+            var closeButton = document.getElementById('campaignPopupClose');
+            var dismissButton = document.getElementById('campaignPopupDismiss');
+            if (!popup) return;
+
+            function closePopup() {
+                popup.style.display = 'none';
+            }
+
+            popup.style.display = 'flex';
+
+            if (closeButton) {
+                closeButton.addEventListener('click', closePopup);
+            }
+            if (dismissButton) {
+                dismissButton.addEventListener('click', closePopup);
+            }
+            popup.addEventListener('click', function(event) {
+                if (event.target === popup) {
+                    closePopup();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
