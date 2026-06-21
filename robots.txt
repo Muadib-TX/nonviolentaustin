@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.nonviolentaustin.org/sitemap.xml
+Host: www.nonviolentaustin.org
